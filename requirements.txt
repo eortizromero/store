@@ -1,0 +1,8 @@
+click==6.7
+ERPpeek==1.6.3
+-e git+https://github.com/eortizromero/flakoo.git@d07c7e2277dd8a0a8d5a22dd9f1dfa26057b1b38#egg=Flakoo
+Flask==0.12.2
+itsdangerous==0.24
+Jinja2==2.9.6
+MarkupSafe==1.0
+Werkzeug==0.12.2
