@@ -18,11 +18,11 @@ def server():
 	if request.method == 'POST':
 		server_ip = request.form['server']
 		if not server_ip or server_ip == '':
-			return "El campo no debe estar vacio"
+			return "Field ´server´ is required"
 		connect = Flakoo(server=server_ip)
 		serv = connect.run_server()
 		if not serv:
-			return "Necesitas una dirección parecida a http://midominio.com:8069 o http://192.168.1.24:8069"
+			return "You need a server similar to http://midominio.com:8069 o http://192.168.1.24:8069"
 		else:
 			session['server'] = server_ip
 			return redirect(url_for('browse'))
