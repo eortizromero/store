@@ -5,16 +5,18 @@ from flakoo import Flakoo
 
 app = Flask(__name__)
 
+
 @app.route('/')
+@app.route('/home')
 def home():
-	if 'server' in session:
-		return redirect(url_for('browse'))
+	# if 'server' in session:
+	# 	return redirect(url_for('browse'))
 	return render_template('home.html')
 
 @app.route('/server', methods=['POST', 'GET'])
 def server():
-	if 'server' in session:
-		return redirect(url_for('browse'))
+	# if 'server' in session:
+	# 	return redirect(url_for('browse'))
 	if request.method == 'POST':
 		server_ip = request.form['server']
 		if not server_ip or server_ip == '':
@@ -22,16 +24,24 @@ def server():
 		connect = Flakoo(server=server_ip)
 		serv = connect.run_server()
 		if not serv:
-			return "You need a server similar to http://midominio.com:8069 o http://192.168.1.24:8069"
+			return redirect(url_for('error'))
+			# return ""
 		else:
-			session['server'] = server_ip
-			return redirect(url_for('browse'))
-	# TODO: render a template maybe 
+			# session['server'] = server_ip
+			return redirect(url_for('manager'))
 
+	return redirect(url_for('home'))
+
+@app.route('/error')
+def error(vals=None):
+	vals = {
+		'error_name': 'You need a Odoo Address similar to http://midominio.com:8069 o http://192.168.1.24:8069'
+	}
+	return render_template('error/error.html', vals=vals)
 
 @app.route('/manager/database')
 def manager():
-	pass
+	return render_template('manager_database.html')
 
 @app.route('/browse')
 def browse():

@@ -1,14 +1,48 @@
 {% extends "layout.html" %}
 
 {% block main_container %}
-	<h1>Odoo Server Page with Flakoo and ERPpeek</h1>
-	<p>Para conectar con la API de Odoo requiere la dirección del servidor en donde tiene instalada su instancia.</p>
-	<p>Si usa un puerto diferente al predeterminado agreguelo junto a su dirección, <br />ejemplo: <br />
-	http://midominio.com:8070 o http://192.168.1.24:8070</p> 
-	<p>Puerto predeterminado <strong>8069</strong></p>
-	<form action="{{ url_for('server') }}" method="POST">
-		<label for="server">Servidor Odoo</label>
-		<input type="text" name="server" id="server">
-		<button type="submit" name="button">Entrar</button>
-	</form>
+	<div class="row">
+		<div class="col s12 m7 offset-m2">
+			<div class="card-panel blue-grey lighten-5 mt-50">
+				<span class="new badge pink darken-1 white-text" data-badge-caption="(Just Admin Users)"></span>
+				<h1 class="title-odoo uppercase">Odoo Point Of Sale</h1>
+
+				<div class="row">
+					<p>For connect with your Odoo instance you need to have installed it.</p>
+					<p>If your port is another just add it with your server address </p>
+					<br />Example: <br />
+					http://mydomain.com:8070 or http://192.168.1.24:8070</p> 
+					<p>Port by default <strong>8069</strong>
+					<br /> 
+					<br /> 
+					<div class="col s12 m6 offset-m4">
+						<p>Use another Port</p>
+						<div class="switch">
+							<label>
+								Off
+								<input type="checkbox">
+								<span class="lever"></span>
+								On
+							</label>
+						</div>
+					</div>
+					<form class='col s12' action="{{ url_for('server') }}" method="POST">
+						<div class="input-field col s4">
+							<input type="text" name="server" id="server">
+							<label for="server">Odoo Address</label>
+						</div>
+						<div class="input-field col s4">
+							<input type="text" name="port" id="port" value="8069" readonly>
+							<label for="port">Port</label>
+						</div>
+						<div class="input-field col s4">
+							<button type="submit" name="button" class="btn waves-effect waves-light pink accent-2">Enter</button>
+						</div>
+					</form>
+				</div>
+				<a href="{{ url_for('manager') }}" class="btn waves-effect waves-light red darken-4">Administrador de base de datos</a>
+			</div>
+		</div>
+	</div>
+	
 {% endblock %}

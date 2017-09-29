@@ -1,0 +1,81 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	font-family: 'Circular', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+span.badge{
+	height: 30px !important;
+	line-height: 30px !important;
+	padding: 0 26px !important;
+}
+
+span.badge.new{
+	border-radius: 20px !important;
+}
+
+span.arrow-down{
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #f00;
+}
+
+.title-odoo{
+	font-size: 2.2rem !important;
+}
+
+.uppercase{
+	text-transform: uppercase !important;
+}
+
+.mt-10{
+	margin-top: 10px !important;
+}
+.mt-20{
+	margin-top: 20px !important;
+}
+.mt-30{
+	margin-top: 30px !important;
+}
+.mt-40{
+	margin-top: 40px !important;
+}
+.mt-50{
+	margin-top: 50px !important;
+}
+
+.fz-12{
+	font-size: 12px !important;
+}
+.fz-14{
+	font-size: 14px !important;
+}
+.fz-16{
+	font-size: 16px !important;
+}
+.fz-18{
+	font-size: 18px !important;
+}
+.fz-20{
+	font-size: 20px !important;
+}
+.fz-22{
+	font-size: 22px !important;
+}
+.fz-24{
+	font-size: 24px !important;
+}
+.fz-30{
+	font-size: 30px !important;
+}
+.fz-40{
+	font-size: 40px !important;
+}
