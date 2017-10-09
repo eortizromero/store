@@ -5,7 +5,6 @@ from flakoo import Flakoo
 
 app = Flask(__name__)
 
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -14,7 +13,7 @@ def home():
 	return render_template('home.html')
 
 @app.route('/server', methods=['POST', 'GET'])
-def server():
+def server(vals=None):
 	# if 'server' in session:
 	# 	return redirect(url_for('browse'))
 	if request.method == 'POST':
@@ -25,23 +24,29 @@ def server():
 		serv = connect.run_server()
 		if not serv:
 			return redirect(url_for('error'))
-			# return ""
 		else:
-			# session['server'] = server_ip
-			return redirect(url_for('manager'))
+			vals = {
+				'list_db': connect.list_database(),
+			}
+			return render_template('manager_database.html', vals=vals)
 
 	return redirect(url_for('home'))
 
 @app.route('/error')
 def error(vals=None):
+
 	vals = {
 		'error_name': 'You need a Odoo Address similar to http://midominio.com:8069 o http://192.168.1.24:8069'
 	}
 	return render_template('error/error.html', vals=vals)
 
 @app.route('/manager/database')
-def manager():
-	return render_template('manager_database.html')
+def manager(vals=None):
+
+	vals = {
+		'list_db': list_db,
+	}
+	return render_template('manager_database.html', vals=vals)
 
 @app.route('/browse')
 def browse():

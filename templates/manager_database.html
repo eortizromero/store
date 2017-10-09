@@ -9,6 +9,14 @@
 	<div class="row uppercase">
 		<div class="col">
 			<p class="white-text">Select your Database or create one:</p>
+			{% if vals.list_db %}
+			<ul>
+				<li>
+					<a href="">{{ vals.list_db }}</a>
+				</li>
+			</ul>
+			{% endif %}
 		</div>
 	</div>
+
 {% endblock %}
